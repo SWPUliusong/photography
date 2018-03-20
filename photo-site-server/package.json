@@ -1,0 +1,21 @@
+{
+  "name": "photo-site-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-logger": "^3.2.0",
+    "koa-paths-router": "0.0.2",
+    "koa-session": "^5.8.1",
+    "koa-static": "^4.0.2",
+    "mongoose": "^5.0.10"
+  }
+}

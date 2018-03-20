@@ -1,0 +1,5 @@
+# 依赖包
+node_modules
+
+# 日志
+npm-debug.log*
