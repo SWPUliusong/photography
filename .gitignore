@@ -3,3 +3,7 @@ node_modules
 
 # 日志
 npm-debug.log*
+
+# 静态文件夹
+public/
+images/
