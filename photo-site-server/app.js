@@ -20,13 +20,7 @@ app.use((cxt, next) => {
     try {
         return next()
     } catch (err) {
-        console.log(err)
-        cxt.status = err.status || 500
-        cxt.body = {
-            msfasdfasdfg: err.message,
-            asdfasfasf: 145156,
-            asreteryer:14254523614,
-        }
+        console.error(err)
     }
 })
 
