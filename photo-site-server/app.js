@@ -5,6 +5,9 @@ const bodyParser = require("koa-bodyparser")
 const session = require("koa-session")
 const frouter = require("koa-paths-router")
 
+// 连接数据库
+require("./models")
+
 const app = new Koa()
 
 // 对session进行签名
@@ -17,9 +20,12 @@ app.use((cxt, next) => {
     try {
         return next()
     } catch (err) {
+        console.log(err)
         cxt.status = err.status || 500
         cxt.body = {
-            message: err.message
+            msfasdfasdfg: err.message,
+            asdfasfasf: 145156,
+            asreteryer:14254523614,
         }
     }
 })
@@ -40,3 +46,5 @@ app.use(frouter(app, {
     root: "./routes",
     _: true
 }))
+
+app.listen(5000, () => console.log(`listening at 5000`))
