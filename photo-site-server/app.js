@@ -5,8 +5,8 @@ const bodyParser = require("koa-bodyparser")
 const session = require("koa-session")
 const frouter = require("koa-paths-router")
 
-// 连接数据库
-require("./models")
+// 连接数据库,创建管理员账号
+require("./admin")
 
 const app = new Koa()
 
@@ -31,10 +31,21 @@ app.use(staticServer("./public", {
 
 app.use(session({
     key: "photo-site",
-    maxAge: 1000 * 60 * 60 * 24
+    maxAge: 1000 * 60 * 60
 }, app));
 
 app.use(bodyParser())
+
+// 拦截未登录用户
+app.use((ctx, next) => {
+    let user = ctx.session.user
+    if (!user && !(/(login)|(files\/?$)/).test(ctx.url)) {
+        return ctx.throw(401, "用户未登录")
+    }
+
+    return next()
+})
+
 // 自动挂载路由
 app.use(frouter(app, {
     root: "./routes",

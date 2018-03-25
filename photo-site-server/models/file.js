@@ -7,16 +7,19 @@ const File = new Schema({
         index: true
     },
     path: String,
+    filename: String,
+    size: String,
+    mimeType: String,
     createTime: {
         type: Date,
         default: Date.now
     }
 })
 
-const basePath = "/files/"
+// const basePath = "/files/"
 
-File.pre("save", function(next) {
-    this.path = basePath + this.key
-})
+// File.pre("save", function(next) {
+//     this.path = basePath + this.key
+// })
 
 module.exports = mongoose.model("file", File)

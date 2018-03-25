@@ -3,10 +3,6 @@ const { Schema } = mongoose
 
 const Album = new Schema({
     dirname: String,
-    count: {
-        type: Number,
-        default: 0
-    },
     images: [String],
     createTime: {
         type: Date,
