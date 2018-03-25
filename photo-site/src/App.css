@@ -1,0 +1,86 @@
+#root, .App {
+    height: 100%;
+}
+
+.App {
+    padding-top: 55px;
+}
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 55px;
+    float: left;
+}
+.App-header {
+    background-color: #333333;
+    height: 55px;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(23, 23, 23, 0.5);
+    z-index: 100;
+    min-width: 1040px;
+}
+
+.App-header::after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.App-menu {
+    float: left;
+    margin-left: 15px;
+}
+
+.App-menu li {
+    float: left;
+    line-height: 55px;
+    font-size: 16px;
+}
+
+.App-link {
+    padding: 0 15px;
+    color: #999;
+    display: inline-block;
+    height: 100%;
+    text-decoration: none;
+}
+
+.App-link:hover,
+.App-link.active {
+    color: #fff;
+    background: #000;
+    text-decoration: none;
+}
+
+.App-dropdown-link:hover {
+    color: #fff;
+}
+
+.App-user {
+    float: right;
+    font-size: 16px;
+    line-height: 55px;
+    margin-right: 60px;
+}
+
+.App-user a {
+    color: #dfdfdf;
+}
+
+.App-dropdown-link {
+    display: inline-block;
+    height: 100%;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

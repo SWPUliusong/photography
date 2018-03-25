@@ -1,0 +1,63 @@
+.Album-title {
+    display: block;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Image-wrap {
+    height: 240px;
+    overflow: hidden;
+    padding: 5px;
+    background: #fff;
+    cursor: pointer;
+    background-size: cover;
+}
+
+.Image-wrap:hover {
+    box-shadow: 0 0 15px #666;
+}
+
+.Image-modal {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba(23, 23, 23, 0.7);
+}
+
+.Image-modal-header {
+    height: 55px;
+    line-height: 55px;
+    background-color: rgba(23, 23, 23, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 0 30px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.Image-slide {
+    position: absolute;
+    top: 50%;
+    font-size: 16px;
+    border: 1px solid #666;
+    background-color: #999;
+    padding: 8px 12px;
+    color: #fff;
+    opacity: 0.4;
+}
+
+.Image-slide:hover {
+    opacity: 1;
+}
