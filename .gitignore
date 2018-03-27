@@ -1,9 +1,9 @@
-# 依赖包
+﻿# 依赖包
 node_modules
 
 # 日志
 npm-debug.log*
 
 # 静态文件夹
-public/
+*server/public/
 images/
