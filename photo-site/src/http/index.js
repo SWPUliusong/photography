@@ -43,3 +43,18 @@ export function deleteAlbum(id) {
 export function getAlbum(id) {
     return http.get(api.albums + id)
 }
+
+// 删除相片
+export function deleteImg(albumId, key) {
+    return http.delete(api.files + key, { params: { albumId } })
+}
+
+// 上传相片
+export function uploadImg(albumId, file) {
+    const formData = new FormData()
+    formData.append("file", file)
+    return http.post(api.files, formData, {
+        params: { albumId },
+        "content-type": "multipart/form-data"
+    })
+}
