@@ -40,6 +40,10 @@ class Album {
     @action
     setAlbum(data) {
         Object.assign(this, data)
+        let len = this.images.length
+        if(this.index > len) {
+            this.index = len
+        }
     }
 
     @action
@@ -82,7 +86,7 @@ class Album {
         let { _id: id } = this
         let key = this.current.match(/files\/(\w*)\..*$/)[1]
         try {
-            await deleteImg(key)
+            await deleteImg(id, key)
             await this.getAlbum(id)
         } catch (err) {
             console.error(err)

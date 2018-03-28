@@ -42,7 +42,7 @@ export default class Image extends React.Component {
                 <div className="Image-modal" style={{ display: this.state.visible ? "flex" : "none" }}>
                     <header className="Image-modal-header" onClick={e => e.stopPropagation()}>
                         <span>{albumStore.index} / {albumStore.images.length}</span>
-                        <span className="Image-delete" onClick={this.deleteImg}>
+                        <span title="删除" className="Image-delete" onClick={this.deleteImg}>
                             <Icon type="delete" />
                         </span>
                     </header>
