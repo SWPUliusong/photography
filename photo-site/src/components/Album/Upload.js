@@ -1,11 +1,13 @@
 import React from "react"
-import { Icon } from "antd"
+import { Icon, Progress } from "antd"
+import { albumStore } from "../../store"
 
 export default class Upload extends React.Component {
 
     upload(files) {
         if (files.length > 0) {
             console.log(files)
+            albumStore.uploadImg(files)
         }
     }
 

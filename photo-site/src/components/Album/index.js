@@ -18,18 +18,18 @@ export default class Album extends React.Component {
         albumStore.getAlbum(id)
     }
 
-    deleteAlbum = album => {
-        Modal.confirm({
-            title: '确定删除这个相册吗?',
-            content: '相册下的相片也会被一同删除',
-            okText: '确认',
-            okType: 'danger',
-            cancelText: '取消',
-            onOk() {
-                console.log('OK');
-            },
-        });
-    }
+    // deleteImg = (id, key) => {
+    //     Modal.confirm({
+    //         title: '确定删除这张图片吗?',
+    //         content: '被删除的图片将无法恢复',
+    //         okText: '确认',
+    //         okType: 'danger',
+    //         cancelText: '取消',
+    //         onOk() {
+    //             console.log('OK');
+    //         },
+    //     });
+    // }
 
     render() {
         return (
@@ -39,12 +39,11 @@ export default class Album extends React.Component {
                         <Link to="/albums" style={{ color: "#999" }}>
                             <Icon type="left" /> 返回
                         </Link>
-
                     </Col>
-                    <Col span={2}>
+                    <Col span={6}>
                         <Upload />
                     </Col>
-                    <Col span={4} offset={4}>
+                    <Col span={4}>
                         <span className="Album-title" title={albumStore.dirname}>
                             {albumStore.dirname}
                         </span>

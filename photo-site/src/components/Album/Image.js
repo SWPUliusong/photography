@@ -10,7 +10,7 @@ export default class Image extends React.Component {
     }
 
     toggle = () => {
-        if(!this.state.visible) {  
+        if (!this.state.visible) {
             let { src } = this.props
             albumStore.setIndex(albumStore.images.indexOf(src))
         }
@@ -24,10 +24,15 @@ export default class Image extends React.Component {
         e.stopPropagation()
         albumStore.next()
     }
-    
+
     prev = e => {
         e.stopPropagation()
         albumStore.prev()
+    }
+    
+    deleteImg = e => {
+        e.stopPropagation()
+        albumStore.deleteImg()
     }
 
     render() {
@@ -35,13 +40,16 @@ export default class Image extends React.Component {
         return (
             <div className="Image-wrap" style={{ backgroundImage: `url(${src})` }} onClick={this.toggle}>
                 <div className="Image-modal" style={{ display: this.state.visible ? "flex" : "none" }}>
-                    <header className="Image-modal-header">
+                    <header className="Image-modal-header" onClick={e => e.stopPropagation()}>
                         <span>{albumStore.index} / {albumStore.images.length}</span>
+                        <span className="Image-delete" onClick={this.deleteImg}>
+                            <Icon type="delete" />
+                        </span>
                     </header>
-                    <span onClick={this.prev} style={{left: "30px"}} className="Image-slide">
+                    <span onClick={this.prev} style={{ left: "30px" }} className="Image-slide">
                         <Icon type="arrow-left" />
                     </span>
-                    <span onClick={this.next} style={{right: "30px"}} className="Image-slide">
+                    <span onClick={this.next} style={{ right: "30px" }} className="Image-slide">
                         <Icon type="arrow-right" />
                     </span>
                     <img src={albumStore.current} alt={alt} />

@@ -3,32 +3,8 @@ import { message } from "antd"
 import {
     getAlbum,
     deleteImg,
-    uploadImg,
 } from "../http"
-
-// 下载列表
-class Upload {
-    @observable total = 0
-    @observable success = 0
-    @observable error = 0
-
-    @action
-    start(total) {
-        this.total = total
-        this.success = 0
-        this.error = 0
-    }
-
-    @action
-    resolve() {
-        this.success++
-    }
-
-    @action
-    reject() {
-        this.error++
-    }
-}
+import Upload from "./upload"
 
 class Album {
     @observable images = []
@@ -102,30 +78,26 @@ class Album {
         }
     }
 
-    async deleteImg(id, key) {
+    async deleteImg() {
+        let { _id: id } = this
+        let key = this.current.match(/files\/(\w*)\..*$/)[1]
         try {
             await deleteImg(key)
-            let album = await getAlbum(id)
-            this.setAlbum(album)
+            await this.getAlbum(id)
         } catch (err) {
-            message.error(err.data || err)
+            console.error(err)
+            message.error(err.data || err.message || '未知错误')
         }
     }
 
-    async uploadImg(id, files) {
-        files = [...files]
-        this.upload.start(files.length)
-        let promise_arr = files.map(file => {
-            return uploadImg(file)
-                .then(this.upload.resolve)
-                .catch(this.upload.reject)
-        })
+    async uploadImg(files) {
+        let { _id: id } = this
         try {
-            await Promise.all(promise_arr)
-            let album = await getAlbum(id)
-            this.setAlbum(album)
+            await this.upload.start(id, files)
+            await this.getAlbum(id)
         } catch (err) {
-            message.error(err.data || err)
+            console.error(err)
+            message.error(err.data || err.message || '未知错误')
         }
     }
 }
