@@ -10,7 +10,7 @@ http.interceptors.response.use(res => {
     return res.data
 }, err => {
     let res = err.response
-    console.log(res)
+    console.error(err)
     if (res && res.status === 401) {
         userStore.removeUser()
     }

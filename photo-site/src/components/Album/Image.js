@@ -29,7 +29,7 @@ export default class Image extends React.Component {
         e.stopPropagation()
         albumStore.prev()
     }
-    
+
     deleteImg = e => {
         e.stopPropagation()
         albumStore.deleteImg()
@@ -52,7 +52,7 @@ export default class Image extends React.Component {
                     <span onClick={this.next} style={{ right: "30px" }} className="Image-slide">
                         <Icon type="arrow-right" />
                     </span>
-                    <img src={albumStore.current} alt={alt} />
+                    <img style={{ maxHeight: "100%", maxWidth: "100%" }} src={albumStore.current} alt={alt} />
                 </div>
             </div>
         )

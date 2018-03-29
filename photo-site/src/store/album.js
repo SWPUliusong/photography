@@ -89,7 +89,6 @@ class Album {
             await deleteImg(id, key)
             await this.getAlbum(id)
         } catch (err) {
-            console.error(err)
             message.error(err.data || err.message || '未知错误')
         }
     }
@@ -100,7 +99,6 @@ class Album {
             await this.upload.start(id, files)
             await this.getAlbum(id)
         } catch (err) {
-            console.error(err)
             message.error(err.data || err.message || '未知错误')
         }
     }

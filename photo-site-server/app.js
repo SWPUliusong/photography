@@ -39,7 +39,7 @@ app.use(bodyParser())
 // 拦截未登录用户
 app.use((ctx, next) => {
     let user = ctx.session.user
-    if (!user && !(/(login)|(files\/?$)/).test(ctx.url)) {
+    if (!user && !(/^\/(login)|(files)\/?/).test(ctx.url)) {
         return ctx.throw(401, "用户未登录")
     }
 
