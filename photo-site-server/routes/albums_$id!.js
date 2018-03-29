@@ -37,6 +37,7 @@ exports.get = [
                 .skip((page - 1) * size)
                 .limit(size)
                 .select("_id dirname images")
+                .sort("-createTime")
                 .exec(),
             Album.count()
         ])
@@ -46,9 +47,11 @@ exports.get = [
             let {
                 _id: id,
                 dirname,
-                images: { length: count },
-                images: [lastest]
+                images,
             } = doc.toObject()
+
+            let count = images.length
+            let lastest = images[count - 1]
 
             return { id, dirname, count, lastest }
         })
@@ -71,6 +74,9 @@ exports.get = [
         if (!album) {
             return ctx.throw(404, '相册不存在');
         }
+
+        album = album.toObject()
+        album.images.reverse()
 
         ctx.body = album
     }

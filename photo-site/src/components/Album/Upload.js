@@ -1,13 +1,15 @@
 import React from "react"
-import { Icon, Progress } from "antd"
+import { Icon } from "antd"
 import { albumStore } from "../../store"
 
 export default class Upload extends React.Component {
+    // 保存form节点，用于reset文件表单
+    fileElem = null
 
     upload(files) {
         if (files.length > 0) {
-            console.log(files)
             albumStore.uploadImg(files)
+            this.fileElem.reset()
         }
     }
 
@@ -16,13 +18,15 @@ export default class Upload extends React.Component {
             <label htmlFor="image-file" style={{ fontSize: "16px", cursor: "pointer" }}>
                 <Icon type="cloud-upload" /> 上传
 
-                <input
-                    multiple
-                    id="image-file"
-                    type="file"
-                    hidden
-                    accept="image/gif,image/png,image/jpeg"
-                    onChange={e => this.upload(e.target.files)} />
+                <form ref={node => this.fileElem = node}>
+                    <input
+                        multiple
+                        id="image-file"
+                        type="file"
+                        hidden
+                        accept="image/gif,image/png,image/jpeg"
+                        onChange={e => this.upload(e.target.files)} />
+                </form>
             </label>
         )
     }

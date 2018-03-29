@@ -1,10 +1,15 @@
 import axios from "axios"
 import { userStore } from "../store"
 
-let http = axios.create({
-    timeout: 2000,
-    baseURL: "/api"
-})
+let options = {
+    timeout: 5000,
+}
+
+if(process.env.NODE_ENV !== 'production') {
+    options.baseURL = "/api"
+}
+
+const http = axios.create(options)
 
 http.interceptors.response.use(res => {
     return res.data

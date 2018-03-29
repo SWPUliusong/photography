@@ -54,6 +54,7 @@ exports.get = [
                 .skip((page - 1) * size)
                 .limit(size)
                 .select("path")
+                .sort("-createTime")
                 .exec(),
             Album.count()
         ])

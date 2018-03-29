@@ -1,5 +1,6 @@
 import { observable, computed, action } from "mobx"
 import { message } from "antd"
+import moment from "moment"
 import {
     getAlbum,
     deleteImg,
@@ -10,17 +11,18 @@ class Album {
     @observable images = []
     @observable index = 1
     @observable dirname = ""
-    @observable createTime = ""
+    @observable updateTime = ""
 
     @observable upload = new Upload()
 
+    // 更新时间
     @computed get time() {
         let date = new Date()
-        if (this.createTime) {
-            date = new Date(this.createTime)
+        if (this.updateTime) {
+            date = new Date(this.updateTime)
         }
 
-        return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+        return moment(date).format("YYYY-MM-DD HH:mm:ss")
     }
 
     // 当前展示图片

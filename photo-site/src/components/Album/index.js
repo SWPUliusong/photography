@@ -1,6 +1,6 @@
 import React from "react"
 import { observer } from "mobx-react"
-import { Icon, Row, Col, List, Modal } from "antd"
+import { Icon, Row, Col, List, Progress } from "antd"
 import { Link } from "react-router-dom"
 
 import { albumStore } from "../../store"
@@ -40,16 +40,23 @@ export default class Album extends React.Component {
                             <Icon type="left" /> 返回
                         </Link>
                     </Col>
-                    <Col span={6}>
+                    <Col span={2}>
                         <Upload />
+                    </Col>
+                    <Col span={4}>
+                        {
+                            albumStore.upload.total > 0 ? (
+                                <Progress percent={albumStore.upload.successPercen} />
+                            ) : null
+                        }
                     </Col>
                     <Col span={4}>
                         <span className="Album-title" title={albumStore.dirname}>
                             {albumStore.dirname}
                         </span>
                     </Col>
-                    <Col span={4} offset={6}>
-                        {albumStore.time} 创建
+                    <Col span={5} offset={5}>
+                        {albumStore.time} 更新
                     </Col>
                 </Row>
 

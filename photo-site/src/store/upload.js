@@ -10,11 +10,11 @@ export default class Upload {
 
     // 成功百分比
     @computed get successPercen() {
-        return `${this.success / this.total * 100}%`
+        return this.success / this.total * 100
     }
     // 失败百分比
     @computed get errorPercen() {
-        return `${this.success / this.total * 100}%`
+        return this.error / this.total * 100
     }
     // 是否已完成
     @computed get finished() {
@@ -56,8 +56,8 @@ export default class Upload {
         this.add(files.length)
         let promise_arr = files.map(file => {
             return uploadImg(id, file)
-                .then(() => this.resolve)
-                .catch(() => this.reject)
+                .then(() => this.resolve())
+                .catch(() => this.reject())
         })
 
         return Promise.all(promise_arr)
