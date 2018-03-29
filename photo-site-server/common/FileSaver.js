@@ -27,9 +27,9 @@ module.exports = class FileSaver extends Busboy {
         }
 
         return new Promise(resolve => {
-            this.on('file', function (fieldname, file, filename, size, mimeType) {
+            this.on('file', function (fieldname, file, filename, encoding, mimeType) {
                 fileInfo.path += mime.extension(mimeType)
-                Object.assign(fileInfo, { filename, size, mimeType })
+                Object.assign(fileInfo, { filename, mimeType })
                 file.pipe(fs.createWriteStream(`images/${path.basename(fileInfo.path)}`));
             });
             this.on('finish', () => resolve(fileInfo));

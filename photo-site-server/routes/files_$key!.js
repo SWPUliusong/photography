@@ -80,7 +80,8 @@ exports.delete = async ctx => {
     }
 
     await Promise.all([
-        Album.update({ _id }, { $pull: { images: { $regex: key } } }).exec(),
+        Album.update({ _id }, { $pull: { images: { $regex: key } } }),
+        File.remove({ key }),
         del([`images/${key}.*`])
     ])
 

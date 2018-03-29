@@ -8,7 +8,6 @@ const File = new Schema({
     },
     path: String,
     filename: String,
-    size: String,
     mimeType: String,
     createTime: {
         type: Date,
