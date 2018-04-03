@@ -62,7 +62,7 @@ export default class Album extends React.Component {
 
                 <div className="Albums-list">
                     <List grid={{ gutter: 16, column: 4 }}
-                        dataSource={albumStore.images}
+                        dataSource={albumStore.thumbImages}
                         renderItem={item => (
                             <List.Item>
                                 <Image src={item} alt={item} />

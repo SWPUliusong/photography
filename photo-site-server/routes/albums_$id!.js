@@ -51,7 +51,7 @@ exports.get = [
             } = doc.toObject()
 
             let count = images.length
-            let lastest = images[count - 1]
+            let lastest = images[count - 1].replace(".", "_thumb.")
 
             return { id, dirname, count, lastest }
         })
@@ -77,6 +77,9 @@ exports.get = [
 
         album = album.toObject()
         album.images.reverse()
+        album.thumbImages = album.images.map(src => {
+            return src.replace(".", "_thumb.")
+        })
 
         ctx.body = album
     }

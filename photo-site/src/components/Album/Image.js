@@ -12,7 +12,7 @@ export default class Image extends React.Component {
     toggle = () => {
         if (!this.state.visible) {
             let { src } = this.props
-            albumStore.setIndex(albumStore.images.indexOf(src))
+            albumStore.setIndex(albumStore.thumbImages.indexOf(src))
         }
 
         this.setState(prevState => ({

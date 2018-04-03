@@ -9,6 +9,7 @@ import Upload from "./upload"
 
 class Album {
     @observable images = []
+    @observable thumbImages = []
     @observable index = 1
     @observable dirname = ""
     @observable updateTime = ""

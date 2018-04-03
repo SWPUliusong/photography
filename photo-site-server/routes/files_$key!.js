@@ -5,6 +5,8 @@ const del = require("del")
 const FileSaver = require("../common/FileSaver")
 const { Album, File } = require("../models")
 
+const services = require("../services")
+
 // 上传相片
 exports.post = async (ctx, next) => {
     let { albumId: _id } = ctx.query
@@ -41,7 +43,7 @@ exports.get = [
 
         ctx.type = mime.contentType(key)
         ctx.set("Cache-Control", "max-age=64800")
-        ctx.body = fs.createReadStream(`images/${key}`)
+        ctx.body = services.getFile(key)
     },
     async ctx => {
         let { page, size } = ctx.query

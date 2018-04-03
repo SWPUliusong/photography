@@ -7,6 +7,8 @@ const frouter = require("koa-paths-router")
 
 // 连接数据库,创建管理员账号
 require("./admin")
+// 预加载服务
+require("./services")
 
 const app = new Koa()
 
