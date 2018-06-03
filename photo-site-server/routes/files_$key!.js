@@ -58,7 +58,7 @@ exports.get = [
                 .select("path")
                 .sort("-createTime")
                 .exec(),
-            Album.count()
+            File.count()
         ])
 
         imgList = imgList.map(img => img.path)

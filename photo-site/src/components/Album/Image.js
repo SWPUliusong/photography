@@ -1,6 +1,8 @@
 import React from "react"
 import { observer } from "mobx-react"
 import { Icon } from "antd"
+
+import Cover from "./Cover"
 import { albumStore } from "../../store"
 
 @observer
@@ -38,7 +40,8 @@ export default class Image extends React.Component {
     render() {
         let { src, alt } = this.props
         return (
-            <div className="Image-wrap" style={{ backgroundImage: `url(${src})` }} onClick={this.toggle}>
+            <div className="Image-wrap" onClick={this.toggle}>
+                <Cover src={src} alt={src} />
                 <div className="Image-modal" style={{ display: this.state.visible ? "flex" : "none" }}>
                     <header className="Image-modal-header" onClick={e => e.stopPropagation()}>
                         <span>{albumStore.index} / {albumStore.images.length}</span>

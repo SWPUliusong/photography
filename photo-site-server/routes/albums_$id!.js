@@ -51,7 +51,8 @@ exports.get = [
             } = doc.toObject()
 
             let count = images.length
-            let lastest = images[count - 1].replace(".", "_thumb.")
+            let lastest = images[count - 1]
+            lastest && lastest.replace(".", "_thumb.")
 
             return { id, dirname, count, lastest }
         })
@@ -123,7 +124,7 @@ exports.put = async ctx => {
         return ctx.throw(403, '相册已存在');
     }
 
-    await Album.update({ _id }, { $set: { dirname } })
+    await Album.update({ _id }, { "$set": { dirname } })
 
-    ctx.body = null
+    ctx.status = 200
 }

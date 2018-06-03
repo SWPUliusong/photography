@@ -18,20 +18,8 @@ export default class Album extends React.Component {
         albumStore.getAlbum(id)
     }
 
-    // deleteImg = (id, key) => {
-    //     Modal.confirm({
-    //         title: '确定删除这张图片吗?',
-    //         content: '被删除的图片将无法恢复',
-    //         okText: '确认',
-    //         okType: 'danger',
-    //         cancelText: '取消',
-    //         onOk() {
-    //             console.log('OK');
-    //         },
-    //     });
-    // }
-
     render() {
+        let { total, success } = albumStore.upload
         return (
             <div className="Albums">
                 <Row className="Albums-header">
@@ -45,7 +33,7 @@ export default class Album extends React.Component {
                     </Col>
                     <Col span={4}>
                         {
-                            albumStore.upload.total > 0 ? (
+                            total > 0 && total !== success ? (
                                 <Progress percent={albumStore.upload.successPercen} />
                             ) : null
                         }
